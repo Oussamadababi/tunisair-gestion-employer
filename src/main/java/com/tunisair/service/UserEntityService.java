@@ -42,6 +42,11 @@ public class UserEntityService {
 		   return UER.ListeDesNouveauxRoles();
 	}
 	
+	/* voir tous les Role by user Id */
+	public List<Object> findRoleByIdUser(String Iduser) {
+		   return UER.GetRoleByIdUser(Iduser);
+	}
+	
 	
 
 }
