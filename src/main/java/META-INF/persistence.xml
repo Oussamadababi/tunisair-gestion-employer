@@ -13,5 +13,6 @@
 		<class>com.tunisair.entities.personnel.Magasin</class>
 		<class>com.tunisair.entities.UserRoleMapping</class>
 		<class>com.tunisair.entities.UserRoleMappingPK</class>
+		<class>com.tunisair.entities.KeycloakRole</class>
 	</persistence-unit>
 </persistence>

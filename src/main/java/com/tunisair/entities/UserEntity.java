@@ -1,11 +1,8 @@
 package com.tunisair.entities;
 
-import java.io.Serializable;
 import javax.persistence.*;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.tunisair.entities.personnel.Magasin;
-
 import java.util.List;
 import java.util.Set;
 

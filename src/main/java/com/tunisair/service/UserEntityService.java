@@ -47,6 +47,9 @@ public class UserEntityService {
 		   return UER.GetRoleByIdUser(Iduser);
 	}
 	
-	
+	/* Delete D"une Role User */
+	public void deleteRoleUser(String idR,String IdUser) {
+		UER.DeleteRoleUser(idR, IdUser);
+	}
 
 }

@@ -50,6 +50,10 @@ public class  EquipePersonnelService {
 	public  EquipePersonnel findOne(long id_F) {
 		return  EquipePersonnelRepo.getOne(id_F);
 	}
-
+	/* Chercher Les membres d'equipe by idEquipe */
+	public List< Object> FindMembers(Long IdEquipe) {
+		List< Object> a =  EquipePersonnelRepo.ListeMembreByIdGroupe(IdEquipe);
+		return a;
+	}
 
 }
