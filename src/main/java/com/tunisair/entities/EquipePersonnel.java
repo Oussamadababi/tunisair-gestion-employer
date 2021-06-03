@@ -22,11 +22,11 @@ public class EquipePersonnel   {
 	private boolean etat;
 	// Relation avec entité formation et personnel (Porteuse de données)
 	@ManyToOne
-	@JoinColumn(name = "idPersonnel", insertable = false, updatable = false)
+	@JoinColumn(name = "idPersonnel")
 	private UserEntity personnel;
 	@ManyToOne
 	@JsonIgnore
-	@JoinColumn(name = "idEquipe", insertable = false, updatable = false)
+	@JoinColumn(name = "idEquipe")
 	private Equipe Equipe;
 
 	// getters and setters
@@ -72,9 +72,10 @@ public class EquipePersonnel   {
 		this.personnel = personnel;
 	}
 
-
+	public void setEquipe(Equipe equipe) {
+		Equipe = equipe;
+	}
 	//Constructeurs
-
 	public EquipePersonnel() {
 		super();
 	}
@@ -89,6 +90,8 @@ public class EquipePersonnel   {
 		this.personnel = personnel;
 		Equipe = equipe;
 	}
+
+	
 	
 	
 	

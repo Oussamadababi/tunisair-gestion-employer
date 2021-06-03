@@ -8,17 +8,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tunisair.dao. EquipePersonnelRepository;
+import com.tunisair.dao.EquipeRepository;
+import com.tunisair.dao.userEntityRepository;
+import com.tunisair.entities.Equipe;
 import com.tunisair.entities. EquipePersonnel;
+import com.tunisair.entities.UserEntity;
 
 @Service
 public class  EquipePersonnelService {
 	@Autowired
 	 EquipePersonnelRepository  EquipePersonnelRepo;
+	@Autowired
+	userEntityRepository UER;
+	@Autowired
+	EquipeRepository EPR;
 
 	private static final Logger L = LogManager.getLogger( EquipePersonnelService.class);
 
 	/* Ajouter une  EquipePersonnel */
-	public  EquipePersonnel save( EquipePersonnel F) {
+	public  EquipePersonnel save(String IdPersonnel,long idEquipe) {
+		EquipePersonnel F = new EquipePersonnel();
+		F.setDate_creation(java.time.LocalDate.now());
+		F.setEtat(true);
+		F.setDate_fermeture(null);
+		UserEntity a=UER.getOne(IdPersonnel);
+		F.setPersonnel(a);
+		Equipe P = EPR.getOne(idEquipe);
+		F.setEquipe(P);
+	
+		
 
 		return  EquipePersonnelRepo.save(F);
 

@@ -74,4 +74,10 @@ public class Equipe {
 		super();
 	}
 
+	@Override
+	public String toString() {
+		return "Equipe [Id=" + Id + ", Nom=" + Nom + ", Chef_equipe=" + Chef_equipe + ", EquipePersonnel="
+				+ EquipePersonnel + ", Taches=" + Taches + "]";
+	}
+
 }

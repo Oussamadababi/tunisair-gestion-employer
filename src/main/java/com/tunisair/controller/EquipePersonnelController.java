@@ -23,11 +23,11 @@ public class EquipePersonnelController {
 	EquipePersonnelService Ep;
 	
 	// Ajout EquipePersonnel
-   @PostMapping("/ajout")
-	public EquipePersonnel create(@Valid @RequestBody EquipePersonnel f )
+   @PostMapping("/ajout/{Id}/{IdE}")
+	public EquipePersonnel create(@PathVariable(name="Id") String IdP,@PathVariable(name="IdE") Long IdEquipe)
 	{ 
 	
-		return Ep.save(f);
+		return Ep.save(IdP,IdEquipe);
 	}
    
    /* liste des EquipePersonnels */

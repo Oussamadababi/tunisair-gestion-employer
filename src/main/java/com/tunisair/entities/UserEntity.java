@@ -280,6 +280,11 @@ public class UserEntity {
 	public void setMagasin(Magasin magasin) {
 		Magasin = magasin;
 	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + "]";
+	}
 	
 	
 
