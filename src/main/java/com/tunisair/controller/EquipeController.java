@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,11 @@ public class EquipeController {
 	public List <Equipe> findall(){	
 		return  Es.findall();
 		}
+	 /* liste des Equipes Par id User */
+		@GetMapping(value="/findEquipeByIdUser/{Id}")
+		public List <Equipe> findall(@PathVariable(name="Id") String IdP){	
+			return  Es.findEquipeByIdUser(IdP);
+			}
 	
 
 

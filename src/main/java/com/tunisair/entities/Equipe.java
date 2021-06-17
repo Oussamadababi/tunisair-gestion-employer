@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Equipe {
@@ -17,7 +17,11 @@ public class Equipe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id;
 	private String Nom;
-	private String Chef_equipe;
+	
+	//Relation equipe et chef d'equipe avec userentity
+	@ManyToOne
+	@JoinColumn(name = "Chef_equipe")
+	private UserEntity Chef_equipe;
 
 	// Relation avec les détails d equipe
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "Equipe")
@@ -45,13 +49,7 @@ public class Equipe {
 		Nom = nom;
 	}
 
-	public String getChef_equipe() {
-		return Chef_equipe;
-	}
 
-	public void setChef_equipe(String chef_equipe) {
-		Chef_equipe = chef_equipe;
-		}
 
 	public List<EquipePersonnel> getEquipePersonnel() {
 		return EquipePersonnel;
@@ -61,13 +59,13 @@ public class Equipe {
 		EquipePersonnel = equipePersonnel;
 	}
 
-	public Equipe(long id, String nom, String chef_equipe,
-			List<com.tunisair.entities.EquipePersonnel> equipePersonnel) {
-		super();
-		Id = id;
-		Nom = nom;
+
+	public UserEntity getChef_equipe() {
+		return Chef_equipe;
+	}
+
+	public void setChef_equipe(UserEntity chef_equipe) {
 		Chef_equipe = chef_equipe;
-		EquipePersonnel = equipePersonnel;
 	}
 
 	public Equipe() {
@@ -79,5 +77,7 @@ public class Equipe {
 		return "Equipe [Id=" + Id + ", Nom=" + Nom + ", Chef_equipe=" + Chef_equipe + ", EquipePersonnel="
 				+ EquipePersonnel + ", Taches=" + Taches + "]";
 	}
+
+	
 
 }

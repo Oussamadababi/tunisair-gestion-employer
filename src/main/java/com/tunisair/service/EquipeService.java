@@ -50,6 +50,9 @@ public class EquipeService {
 	public Equipe findOne(long id_F) {
 		return EquipeRepo.getOne(id_F);
 	}
-
+	public List<Equipe> findEquipeByIdUser(String IdU) {
+		return EquipeRepo.ListeEquipeParIdUserChefEquipe(IdU);
+	
+	}
 
 }

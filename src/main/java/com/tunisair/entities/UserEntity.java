@@ -6,50 +6,48 @@ import com.tunisair.entities.personnel.Magasin;
 import java.util.List;
 import java.util.Set;
 
-
 /**
  * The persistent class for the user_entity database table.
  * 
  */
 @Entity
-@Table(name="user_entity")
-@NamedQuery(name="UserEntity.findAll", query="SELECT u FROM UserEntity u")
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Table(name = "user_entity")
+@NamedQuery(name = "UserEntity.findAll", query = "SELECT u FROM UserEntity u")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class UserEntity {
-	
 
 	@Id
 	private String id;
 
-	@Column(name="created_timestamp")
+	@Column(name = "created_timestamp")
 	private Long createdTimestamp;
 
 	private String email;
 
-	@Column(name="email_constraint")
+	@Column(name = "email_constraint")
 	private String emailConstraint;
 
-	@Column(name="email_verified")
+	@Column(name = "email_verified")
 	private Boolean emailVerified;
 
 	private Boolean enabled;
 
-	@Column(name="federation_link")
+	@Column(name = "federation_link")
 	private String federationLink;
 
-	@Column(name="first_name")
+	@Column(name = "first_name")
 	private String firstName;
 
-	@Column(name="last_name")
+	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(name="not_before")
+	@Column(name = "not_before")
 	private Integer notBefore;
 
-	@Column(name="realm_id")
+	@Column(name = "realm_id")
 	private String realmId;
 
-	@Column(name="service_account_client_link")
+	@Column(name = "service_account_client_link")
 	private String serviceAccountClientLink;
 
 	private String username;
@@ -60,6 +58,10 @@ public class UserEntity {
 	private String Assurance_qualite;
 	private String Categorie;
 
+	// Relation avec equipe
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "Chef_equipe")
+	@JsonIgnore
+	private List<Equipe> ChefEquipe;
 	// Relation
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personnel")
 	private List<Formation_Details> Formations_Details;
@@ -92,8 +94,8 @@ public class UserEntity {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personnel")
 	private List<EquipePersonnel> EquipePersonnel;
 
-	//bi-directional many-to-one association to UserAttribute
-	@OneToMany(mappedBy="userEntity")
+	// bi-directional many-to-one association to UserAttribute
+	@OneToMany(mappedBy = "userEntity")
 	private List<UserAttribute> userAttributes;
 
 	public UserEntity() {
@@ -285,7 +287,5 @@ public class UserEntity {
 	public String toString() {
 		return "UserEntity [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + "]";
 	}
-	
-	
 
 }
