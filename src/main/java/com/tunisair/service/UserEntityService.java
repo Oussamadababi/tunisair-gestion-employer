@@ -30,7 +30,7 @@ public class UserEntityService {
 	/* voir tous les personnel */
 	public List<UserEntity> findallPerso() {
 		List<UserEntity> ListePerso=new ArrayList();
-		List<String> ListeIdparPerso = UER.ListeDesIdPerso(UER.GetRoleIdByName("pesonnel"));
+		List<String> ListeIdparPerso = UER.ListeDesIdPerso(UER.GetRoleIdByName("personnel"));
 		for (String ListeP : ListeIdparPerso) {
 			ListePerso.add(UER.getOne(ListeP));
 

@@ -18,4 +18,8 @@ public interface TacheRepository extends JpaRepository<Tache, Long> {
 	
 	@Query(value = "SELECT  equipe.nom FROM tache JOIN equipe ON tache.id_equipe = equipe.id group by equipe.id order by equipe.nom asc ", nativeQuery = true)
 	public  List<String> TopEquipeNom();
+	
+	//SELECT * FROM tache where id_equipe=1?;
+	@Query(value = " SELECT * FROM tache where id_equipe=?1", nativeQuery = true)
+	public  List<Tache> ListeTacheParIdEquipe(long id);
 }

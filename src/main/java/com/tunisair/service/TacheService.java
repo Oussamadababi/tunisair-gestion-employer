@@ -50,5 +50,15 @@ public class TacheService {
 	public Tache findOne(long id_F) {
 		return TacheRepo.getOne(id_F);
 	}
+	/* voir tous les Taches par equipe */
+	public List<Tache> findByEquipe(long id) {
+		List<Tache> a = TacheRepo.ListeTacheParIdEquipe(id);
+
+		for (Tache Taches : a) {
+			L.info("Tache de détails  :" + Taches);
+
+		}
+		return a;
+	}
 
 }

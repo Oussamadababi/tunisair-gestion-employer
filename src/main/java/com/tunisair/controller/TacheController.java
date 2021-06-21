@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,10 @@ public class TacheController {
 	@GetMapping(value="/findall")
 	public List <Tache> findall(){	
 		return  Fs.findall();
+		}
+	@GetMapping(value="/findByEq/{Id}")
+	public List <Tache> findByEquipe(@PathVariable(name="Id") long IdE){	
+		return  Fs.findByEquipe(IdE);
 		}
 
 
