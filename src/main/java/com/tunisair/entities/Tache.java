@@ -21,7 +21,7 @@ public class Tache {
 
 	// Relation
 	@ManyToOne
-	@JoinColumn(name = "idEquipe", insertable = false, updatable = false)
+	@JoinColumn(name = "idEquipe")
 	private Equipe Equipe;
 
 	// Getters and setters

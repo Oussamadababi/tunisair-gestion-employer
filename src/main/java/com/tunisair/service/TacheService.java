@@ -6,7 +6,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.tunisair.dao.EquipeRepository;
 import com.tunisair.dao.TacheRepository;
+import com.tunisair.entities.Equipe;
 import com.tunisair.entities.Tache;
 
 @Service
@@ -14,12 +17,17 @@ public class TacheService {
 
 	@Autowired
 	TacheRepository TacheRepo;
+	
+	@Autowired
+	EquipeService RS;
 
 	private static final Logger L = LogManager.getLogger(TacheService.class);
 
 	/* Ajouter une Tache */
-	public Tache save(Tache F) {
-
+	public Tache save(Tache F,long ide) {
+		Equipe Equi=RS.findOne(ide);
+		F.setEquipe(Equi);
+        F.setStatus(false);
 		return TacheRepo.save(F);
 
 	}

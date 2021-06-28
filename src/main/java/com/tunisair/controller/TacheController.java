@@ -28,11 +28,11 @@ public class TacheController {
 	TacheRepository Tr;
 	
 	// Ajout Tache
-   @PostMapping("/ajout")
-	public Tache create(@Valid @RequestBody Tache f )
+   @PostMapping("/ajout/{ide}")
+	public Tache create(@Valid @RequestBody Tache f,@PathVariable(name="ide") long IdE )
 	{ 
 	
-		return Fs.save(f);
+		return Fs.save(f,IdE);
 	}
    
    /* liste des Taches */
