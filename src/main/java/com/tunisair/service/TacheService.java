@@ -6,8 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.tunisair.dao.EquipeRepository;
 import com.tunisair.dao.TacheRepository;
 import com.tunisair.entities.Equipe;
 import com.tunisair.entities.Tache;
@@ -27,10 +25,11 @@ public class TacheService {
 	public Tache save(Tache F,long ide) {
 		Equipe Equi=RS.findOne(ide);
 		F.setEquipe(Equi);
-        F.setStatus(false);
+        F.setStatus(true);
 		return TacheRepo.save(F);
 
 	}
+
 
 	/* voir tous les Taches */
 	public List<Tache> findall() {
@@ -67,6 +66,16 @@ public class TacheService {
 
 		}
 		return a;
+	}
+	/* changer etat  Tache */
+	public void ChangeStatusFinish(long idT) {
+		 Tache T=TacheRepo.getOne(idT);
+		 T.setStatus(false);
+	}
+	/* changer etat Tache true */
+	public void ChangeStatusTrue(long idT) {
+		 Tache T=TacheRepo.getOne(idT);
+		 T.setStatus(true);
 	}
 
 }

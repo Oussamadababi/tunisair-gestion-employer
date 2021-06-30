@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +52,24 @@ public class TacheController {
 	@GetMapping(value="/findByEq/{Id}")
 	public List <Tache> findByEquipe(@PathVariable(name="Id") long IdE){	
 		return  Fs.findByEquipe(IdE);
+		}
+	
+	// Change Etat Tache Finish
+	   @PutMapping("/updateStatusF/{ide}")
+		public void ChangeStatusTacheF(@PathVariable(name="ide") long IdT )
+		{ 
+		
+			 Fs.ChangeStatusFinish(IdT);
+			 Tr.save(Fs.findOne(IdT));
+		}
+	// Change Etat Tache en cours
+	   @PutMapping("/updateStatusT/{ide}")
+		public void ChangeStatusTacheT(@PathVariable(name="ide") long IdT )
+		{ 
+		
+			 Fs.ChangeStatusTrue(IdT);
+			 Tr.save(Fs.findOne(IdT));
+			 
 		}
 
 
