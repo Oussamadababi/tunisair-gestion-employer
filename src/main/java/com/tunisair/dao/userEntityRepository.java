@@ -23,6 +23,11 @@ public interface userEntityRepository extends JpaRepository<UserEntity, String> 
 	@Modifying
 	@Query(value = "DELETE FROM user_role_mapping WHERE role_id=?1 and user_id=?2", nativeQuery = true)
 	public  void DeleteRoleUser(String IdRole,String IdUser);
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE user_attribute SET  value=?1 WHERE user_id=?2 and name='image' ", nativeQuery = true)
+	public  void UpdateProfilPic(String image,String IdUser);
+	
 	
 	//DELETE FROM user_role_mapping WHERE role_id=? and user_id=?2;
 	
