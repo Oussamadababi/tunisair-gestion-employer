@@ -28,7 +28,10 @@ public interface userEntityRepository extends JpaRepository<UserEntity, String> 
 	@Query(value = "UPDATE user_attribute SET  value=?1 WHERE user_id=?2 and name='image' ", nativeQuery = true)
 	public  void UpdateProfilPic(String image,String IdUser);
 	
+	@Query(value = "SELECT  * FROM user_attribute WHERE user_id=?1 and name='image' ", nativeQuery = true)
+	public  Object GetProfilPic(String IdUser);
 	
+	//SELECT  value FROM user_attribute user_id=?1 and name='image'
 	//DELETE FROM user_role_mapping WHERE role_id=? and user_id=?2;
 	
 	

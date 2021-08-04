@@ -114,6 +114,13 @@ public class UserController {
 						String.format(AppConstants.FILE_DOWNLOAD_HTTP_HEADER, resource.getFilename()))
 				.body(resource);
 	}
-
+	
+	@GetMapping(value = "/imageProfil/{id}")
+	public Object GetprofilPic(@PathVariable(value = "id") String id){
+	 return	UER.GetProfilPic(id);
+		
+	}
+	
+	
 	
 }
