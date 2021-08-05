@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+
 import com.tunisair.entities.UserEntity;
 
 public interface userEntityRepository extends JpaRepository<UserEntity, String> {
@@ -31,8 +32,9 @@ public interface userEntityRepository extends JpaRepository<UserEntity, String> 
 	@Query(value = "SELECT  * FROM user_attribute WHERE user_id=?1 and name='image' ", nativeQuery = true)
 	public  Object GetProfilPic(String IdUser);
 	
-	//SELECT  value FROM user_attribute user_id=?1 and name='image'
-	//DELETE FROM user_role_mapping WHERE role_id=? and user_id=?2;
+	@Query(value = "SELECT * FROM user_entity where username=?1 ", nativeQuery = true)
+	public  UserEntity GetUserbyUsername(String username);
+	
 	
 	
 	

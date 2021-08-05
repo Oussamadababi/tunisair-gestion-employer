@@ -121,6 +121,12 @@ public class UserController {
 		
 	}
 	
+	@GetMapping(value = "/getuser/{username}")
+	public UserEntity getUserbyUsername(@PathVariable(value = "username") String username){
+	 return	UER.GetUserbyUsername(username);
+		
+	}
+	
 	
 	
 }
