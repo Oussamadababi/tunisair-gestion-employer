@@ -25,10 +25,10 @@ public class Formation_Details implements Serializable {
 
 	// Relation avec entité formation et personnel (Porteuse de données)
 	@ManyToOne
-	@JoinColumn(name = "idP", insertable = false, updatable = false)
+	@JoinColumn(name = "idP")
 	private UserEntity personnel;
 	@ManyToOne
-	@JoinColumn(name = "idF", insertable = false, updatable = false)
+	@JoinColumn(name = "idF")
 	private Formation formation;
 
 	// getters and setters

@@ -63,9 +63,10 @@ public class UserEntity {
 	@JsonIgnore
 	private List<Equipe> ChefEquipe;
 	// Relation
+	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personnel")
 	private List<Formation_Details> Formations_Details;
-
+	@JsonIgnore
 	public List<Formation_Details> getFormations_Details() {
 		return Formations_Details;
 	}

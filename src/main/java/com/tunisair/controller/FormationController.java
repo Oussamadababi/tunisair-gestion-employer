@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.tunisair.entities.Formation;
+import com.tunisair.entities.Formation_Details;
 import com.tunisair.service.FormationService;
 
 
@@ -34,6 +35,18 @@ public class FormationController {
 		return Fs.save(f);
 	}
    
+   //Patriciper au formation
+// Ajout formation
+   @PostMapping("/participer")
+	public Formation_Details ParticiperFormation(@Valid @RequestBody Formation_Details f )
+	{ 
+	
+		return Fs.ParticiperFormation(f);
+	}
+   @GetMapping(value="/Personnelparticipe/{idf}")
+	public List <Formation_Details> ParticiperAuForma(@PathVariable(name="idf") Long id){	
+		return  Fs.ParticiperAuformation(id);
+		}
    /* liste des formations */
 	@GetMapping(value="/findall")
 	public List <Formation> findall(){	

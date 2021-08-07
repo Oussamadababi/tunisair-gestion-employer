@@ -8,13 +8,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tunisair.dao.FormationRepository;
+import com.tunisair.dao.Formation_DetailsRepository;
 import com.tunisair.entities.Formation;
+import com.tunisair.entities.Formation_Details;
 
 @Service
 public class FormationService {
 
 	@Autowired
 	FormationRepository FormationRepo;
+	
+	@Autowired
+	Formation_DetailsRepository FDR;
 
 	private static final Logger L = LogManager.getLogger(FormationService.class);
 
@@ -52,4 +57,21 @@ public class FormationService {
 		return FormationRepo.getOne(id_F);
 	}
 
+	public Formation_Details ParticiperFormation(Formation_Details F) {
+        F.setDate_debut(null);
+        F.setDate_fin(null);
+        F.setDate_passage(null);
+		return FDR.save(F);
+
+	}
+	
+	public List<Formation_Details> ParticiperAuformation(long idf) {
+		List<Formation_Details> a = FDR.ListePersonnelParticiperAuFormation(idf);
+
+		for (Formation_Details formations : a) {
+			L.info("Formation de détails  :" + formations);
+
+		}
+		return a;
+	}
 }
