@@ -15,5 +15,7 @@ public interface Formation_DetailsRepository extends JpaRepository<Formation_Det
 	@Query(value = "SELECT * FROM formation_details where idf=?1 ", nativeQuery = true)
 	List<Formation_Details> ListePersonnelParticiperAuFormation(long IdP);
 	//SELECT * FROM formation_details where idf=?1
-
+//SELECT * FROM formation_details where idp ='8d6d7a79-42e2-43c2-b200-c42ef671580b' and idf=3
+	@Query(value = "SELECT * FROM formation_details where idp =?1 and idf=?2 ", nativeQuery = true)
+	List<Formation_Details> verifInscriptionFormation(String idP,long idf);
 }

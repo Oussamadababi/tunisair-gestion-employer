@@ -37,15 +37,19 @@ public class FormationController {
    
    //Patriciper au formation
 // Ajout formation
-   @PostMapping("/participer")
-	public Formation_Details ParticiperFormation(@Valid @RequestBody Formation_Details f )
+   @PostMapping("/participer/{idF}/{idp}")
+	public Formation_Details ParticiperFormation(@PathVariable(name="idF") Long id,@PathVariable(name="idp") String idp )
 	{ 
 	
-		return Fs.ParticiperFormation(f);
+		return Fs.ParticiperFormation(id,idp);
 	}
    @GetMapping(value="/Personnelparticipe/{idf}")
 	public List <Formation_Details> ParticiperAuForma(@PathVariable(name="idf") Long id){	
 		return  Fs.ParticiperAuformation(id);
+		}
+	@GetMapping(value="/verifInscriFormation/{idF}/{idp}")
+	public List <Formation_Details> verificationInscriptionFormation(@PathVariable(name="idF") Long id,@PathVariable(name="idp") String idp){	
+		return  Fs.verficiationInscri(idp, id);
 		}
    /* liste des formations */
 	@GetMapping(value="/findall")

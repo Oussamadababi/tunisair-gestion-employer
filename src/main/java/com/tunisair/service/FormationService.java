@@ -20,6 +20,8 @@ public class FormationService {
 	
 	@Autowired
 	Formation_DetailsRepository FDR;
+	@Autowired
+	UserEntityService UES;
 
 	private static final Logger L = LogManager.getLogger(FormationService.class);
 
@@ -57,16 +59,29 @@ public class FormationService {
 		return FormationRepo.getOne(id_F);
 	}
 
-	public Formation_Details ParticiperFormation(Formation_Details F) {
+	public Formation_Details ParticiperFormation(long idF,String idp ) {
+	   Formation_Details  F = new Formation_Details();
+	   F.setFormation(findOne(idF));
+	   F.setPersonnel(UES.findOne(idp));
         F.setDate_debut(null);
         F.setDate_fin(null);
         F.setDate_passage(null);
+        F.setEtat("En-cours");
 		return FDR.save(F);
 
 	}
 	
 	public List<Formation_Details> ParticiperAuformation(long idf) {
 		List<Formation_Details> a = FDR.ListePersonnelParticiperAuFormation(idf);
+
+		for (Formation_Details formations : a) {
+			L.info("Formation de détails  :" + formations);
+
+		}
+		return a;
+	}
+	public List<Formation_Details> verficiationInscri(String idp,long idf) {
+		List<Formation_Details> a = FDR.verifInscriptionFormation(idp, idf);
 
 		for (Formation_Details formations : a) {
 			L.info("Formation de détails  :" + formations);

@@ -22,6 +22,7 @@ public class Formation_Details implements Serializable {
 	private Date Date_debut;
 	private Date Date_fin;
 	private Date Date_passage;
+	private String Etat;
 
 	// Relation avec entité formation et personnel (Porteuse de données)
 	@ManyToOne
@@ -81,13 +82,23 @@ public class Formation_Details implements Serializable {
 		this.formation = formation;
 	}
 
-	public Formation_Details(long id, Date date_debut, Date date_fin, Date date_passage, UserEntity personnel,
-			Formation formation) {
+	public String getEtat() {
+		return Etat;
+	}
+
+	public void setEtat(String etat) {
+		Etat = etat;
+	}
+
+	
+	public Formation_Details(long id, Date date_debut, Date date_fin, Date date_passage, String etat,
+			UserEntity personnel, Formation formation) {
 		super();
 		Id = id;
 		Date_debut = date_debut;
 		Date_fin = date_fin;
 		Date_passage = date_passage;
+		Etat = etat;
 		this.personnel = personnel;
 		this.formation = formation;
 	}

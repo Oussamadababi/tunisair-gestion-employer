@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tunisair.dao.userEntityRepository;
+import com.tunisair.entities.Formation;
 import com.tunisair.entities.UserEntity;
 
 
@@ -51,5 +52,7 @@ public class UserEntityService {
 	public void deleteRoleUser(String idR,String IdUser) {
 		UER.DeleteRoleUser(idR, IdUser);
 	}
-
+	public UserEntity findOne(String id_F) {
+		return UER.getOne(id_F);
+	}
 }
