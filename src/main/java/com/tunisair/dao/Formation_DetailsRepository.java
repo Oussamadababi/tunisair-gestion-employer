@@ -10,8 +10,8 @@ import com.tunisair.entities.Formation_Details;
 
 @Repository
 public interface Formation_DetailsRepository extends JpaRepository<Formation_Details, Long> {
-	@Query(value = "SELECT * FROM formation_details where id_personnel=?1 ", nativeQuery = true)
-	List<Formation_Details> ListeFormationParIdPerso(long IdP);
+	@Query(value = "SELECT * FROM formation_details where idp=?1 ", nativeQuery = true)
+	List<Formation_Details> ListeFormationParIdPerso(String IdP);
 	@Query(value = "SELECT * FROM formation_details where idf=?1 ", nativeQuery = true)
 	List<Formation_Details> ListePersonnelParticiperAuFormation(long IdP);
 	//SELECT * FROM formation_details where idf=?1

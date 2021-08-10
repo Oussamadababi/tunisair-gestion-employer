@@ -1,5 +1,6 @@
 package com.tunisair.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -89,4 +90,14 @@ public class FormationService {
 		}
 		return a;
 	}
+	public List<Formation> ListeFormationParIdPersno(String idp) {
+		List<Formation_Details> a = FDR.ListeFormationParIdPerso(idp);
+		List<Formation> mesFormation = new ArrayList();
+
+		for (Formation_Details formations : a) {
+			mesFormation.add(FormationRepo.getOne(formations.getId()));
+		}
+		return mesFormation;
+	}
+	
 }

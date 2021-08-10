@@ -77,6 +77,11 @@ public class FormationController {
 		final Formation updatedPersonnel=Fs.save(pers);
 		
 	}
+	 /* liste de mes formations */
+		@GetMapping(value="/findallMyFormation/{idp}")
+		public List <Formation> findallMyformation(@PathVariable(name="idp") String idp){	
+			return  Fs.ListeFormationParIdPersno(idp);
+			}
 
 
 }
