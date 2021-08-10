@@ -95,9 +95,12 @@ public class FormationService {
 		List<Formation> mesFormation = new ArrayList();
 
 		for (Formation_Details formations : a) {
-			mesFormation.add(FormationRepo.getOne(formations.getId()));
+			mesFormation.add(formations.getFormation());
 		}
 		return mesFormation;
+	}
+	public void desinscrireFormation(String idp,long idf) {
+		FDR.DesInscriptionFormation(idp, idf);
 	}
 	
 }

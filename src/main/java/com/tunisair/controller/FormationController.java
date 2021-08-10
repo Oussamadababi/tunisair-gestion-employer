@@ -1,7 +1,9 @@
 package com.tunisair.controller;
 
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -13,8 +15,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.tunisair.entities.Formation;
 import com.tunisair.entities.Formation_Details;
+import com.tunisair.message.MessageResponse;
 import com.tunisair.service.FormationService;
 
 
@@ -82,6 +86,12 @@ public class FormationController {
 		public List <Formation> findallMyformation(@PathVariable(name="idp") String idp){	
 			return  Fs.ListeFormationParIdPersno(idp);
 			}
+		
+		@DeleteMapping(value="/desinscrire/{idp}/{idf}")
+		public ResponseEntity<?>  desincrireFormation(@PathVariable(name="idp") String idp,@PathVariable(name="idf") long idf){
+			Fs.desinscrireFormation(idp, idf);
+			return ResponseEntity.ok(new MessageResponse("le personnel est désinscris de la formations"));
+		}
 
 
 }
