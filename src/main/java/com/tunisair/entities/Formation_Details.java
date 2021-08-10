@@ -19,8 +19,7 @@ public class Formation_Details implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id;
-	private Date Date_debut;
-	private Date Date_fin;
+	
 	private Date Date_passage;
 	private String Etat;
 
@@ -39,22 +38,6 @@ public class Formation_Details implements Serializable {
 
 	public void setId(long id) {
 		Id = id;
-	}
-
-	public Date getDate_debut() {
-		return Date_debut;
-	}
-
-	public void setDate_debut(Date date_debut) {
-		Date_debut = date_debut;
-	}
-
-	public Date getDate_fin() {
-		return Date_fin;
-	}
-
-	public void setDate_fin(Date date_fin) {
-		Date_fin = date_fin;
 	}
 
 	public Date getDate_passage() {
@@ -91,12 +74,10 @@ public class Formation_Details implements Serializable {
 	}
 
 	
-	public Formation_Details(long id, Date date_debut, Date date_fin, Date date_passage, String etat,
+	public Formation_Details(long id, Date date_passage, String etat,
 			UserEntity personnel, Formation formation) {
 		super();
 		Id = id;
-		Date_debut = date_debut;
-		Date_fin = date_fin;
 		Date_passage = date_passage;
 		Etat = etat;
 		this.personnel = personnel;

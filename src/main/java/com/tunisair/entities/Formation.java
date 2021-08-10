@@ -1,5 +1,6 @@
 package com.tunisair.entities;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,6 +27,8 @@ public class Formation {
 	private boolean Aeronotique;
 	private boolean Formation_repetitive;
 	private boolean Diplome;
+	private Date Date_debut;
+	private Date Date_fin;
 
 	// Relation entre la Formation et technicien
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "formation")
@@ -128,8 +131,23 @@ public class Formation {
 	public void setDiplome(boolean diplome) {
 		Diplome = diplome;
 	}
-
 	// Constructeur
+
+	public Date getDate_debut() {
+		return Date_debut;
+	}
+
+	public void setDate_debut(Date date_debut) {
+		Date_debut = date_debut;
+	}
+
+	public Date getDate_fin() {
+		return Date_fin;
+	}
+
+	public void setDate_fin(Date date_fin) {
+		Date_fin = date_fin;
+	}
 
 	public Formation() {
 		super();
@@ -152,5 +170,27 @@ public class Formation {
 		Diplome = diplome;
 		Formations_Details = formations_Details;
 	}
+
+	public Formation(long id, String organisme, String nom_Formation, String libelle, String code, Integer duree,
+			Integer cout, Integer delais, boolean aeronotique, boolean formation_repetitive, boolean diplome,
+			Date date_debut, Date date_fin, List<Formation_Details> formations_Details) {
+		super();
+		Id = id;
+		Organisme = organisme;
+		Nom_Formation = nom_Formation;
+		Libelle = libelle;
+		Code = code;
+		Duree = duree;
+		Cout = cout;
+		Delais = delais;
+		Aeronotique = aeronotique;
+		Formation_repetitive = formation_repetitive;
+		Diplome = diplome;
+		Date_debut = date_debut;
+		Date_fin = date_fin;
+		Formations_Details = formations_Details;
+	}
+	
+	
 
 }

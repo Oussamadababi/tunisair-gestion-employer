@@ -64,8 +64,6 @@ public class FormationService {
 	   Formation_Details  F = new Formation_Details();
 	   F.setFormation(findOne(idF));
 	   F.setPersonnel(UES.findOne(idp));
-        F.setDate_debut(null);
-        F.setDate_fin(null);
         F.setDate_passage(null);
         F.setEtat("En-cours");
 		return FDR.save(F);
