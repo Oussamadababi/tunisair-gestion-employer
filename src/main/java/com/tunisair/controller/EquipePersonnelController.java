@@ -3,6 +3,7 @@ package com.tunisair.controller;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.tunisair.entities.EquipePersonnel;
+import com.tunisair.message.MessageResponse;
 import com.tunisair.service.EquipePersonnelService;
 
 @CrossOrigin(origins = "http://localhost:4201")
@@ -45,6 +47,11 @@ public class EquipePersonnelController {
 	public void delete(@PathVariable(name="id") Long id){
 		Ep.delete(id);
 		
+	}
+	@DeleteMapping(value="/deletemember/{idp}")
+	public ResponseEntity<?>  desincrireFormation(@PathVariable(name="idp") String idp){
+		Ep.DeleteMemberByIDP(idp);
+		return ResponseEntity.ok(new MessageResponse("le personnel est quité de la groupe"));
 	}
 
 }

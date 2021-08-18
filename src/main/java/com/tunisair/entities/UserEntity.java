@@ -92,7 +92,8 @@ public class UserEntity {
 	Magasin Magasin;
 
 	// Relation
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personnel")
+	@OneToMany(mappedBy = "personnel", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval=true)
+
 	private List<EquipePersonnel> EquipePersonnel;
 
 	// bi-directional many-to-one association to UserAttribute

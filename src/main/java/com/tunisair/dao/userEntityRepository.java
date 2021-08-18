@@ -35,6 +35,13 @@ public interface userEntityRepository extends JpaRepository<UserEntity, String> 
 	@Query(value = "SELECT * FROM user_entity where username=?1 ", nativeQuery = true)
 	public  UserEntity GetUserbyUsername(String username);
 	
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE user_attribute SET  value=?1 WHERE user_id=?2 and name=?3 ", nativeQuery = true)
+	public  void UpdateDetailUser(String value,String IdUser,String attribute);
+	
+	
+	
 	
 	
 	

@@ -12,6 +12,7 @@ import com.tunisair.dao.FormationRepository;
 import com.tunisair.dao.Formation_DetailsRepository;
 import com.tunisair.entities.Formation;
 import com.tunisair.entities.Formation_Details;
+import com.tunisair.entities.UserEntity;
 
 @Service
 public class FormationService {
@@ -100,5 +101,20 @@ public class FormationService {
 	public void desinscrireFormation(String idp,long idf) {
 		FDR.DesInscriptionFormation(idp, idf);
 	}
+	
+	public List<UserEntity> ListePersonnelNonAffecter(long idf){
+		
+		List<UserEntity> AllUsers=UES.findall();
+		List<UserEntity> UsersNonAffecter = new ArrayList();
+		List<Formation_Details> UsersAffecter =FDR.ListePersonnelParticiperAuFormation(idf);
+		for( Formation_Details Formation_Details : UsersAffecter){
+			UsersNonAffecter.add(Formation_Details.getPersonnel());	
+		}
+		AllUsers.removeAll(UsersNonAffecter);
+		return AllUsers;
+		}
+		
+		
+	
 	
 }

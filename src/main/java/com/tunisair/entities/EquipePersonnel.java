@@ -1,6 +1,8 @@
 package com.tunisair.entities;
 
 import java.time.LocalDate;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,10 +23,10 @@ public class EquipePersonnel   {
 	private LocalDate Date_fermeture;
 	private boolean etat;
 	// Relation avec entité formation et personnel (Porteuse de données)
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "idPersonnel")
 	private UserEntity personnel;
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	@JoinColumn(name = "idEquipe")
 	private Equipe Equipe;

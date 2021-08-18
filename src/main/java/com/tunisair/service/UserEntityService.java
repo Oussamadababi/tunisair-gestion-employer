@@ -55,4 +55,9 @@ public class UserEntityService {
 	public UserEntity findOne(String id_F) {
 		return UER.getOne(id_F);
 	}
+	
+	public void ChangeDetailUser(String value,String Idu,String attribute){
+		 UER.UpdateDetailUser(value, Idu, attribute);
+		
+	}
 }

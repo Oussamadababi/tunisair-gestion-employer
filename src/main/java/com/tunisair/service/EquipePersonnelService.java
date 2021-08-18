@@ -73,5 +73,8 @@ public class  EquipePersonnelService {
 		List< Object> a =  EquipePersonnelRepo.ListeMembreByIdGroupe(IdEquipe);
 		return a;
 	}
+	public void DeleteMemberByIDP(String id) {
+		EquipePersonnelRepo.deleteMemberofEquipe(id);
+	}
 
 }

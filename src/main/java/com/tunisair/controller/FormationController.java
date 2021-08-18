@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tunisair.entities.Formation;
 import com.tunisair.entities.Formation_Details;
+import com.tunisair.entities.UserEntity;
 import com.tunisair.message.MessageResponse;
 import com.tunisair.service.FormationService;
 
@@ -92,6 +93,10 @@ public class FormationController {
 			Fs.desinscrireFormation(idp, idf);
 			return ResponseEntity.ok(new MessageResponse("le personnel est désinscris de la formations"));
 		}
-
+		/* liste des users non affecter */
+		@GetMapping(value="/usersnonaffecter/{idf}")
+		public List <UserEntity> usernonaffecterformation(@PathVariable(name="idf") long idf){	
+			return  Fs.ListePersonnelNonAffecter(idf);
+			}
 
 }

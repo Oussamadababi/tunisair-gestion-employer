@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.tunisair.dao.userEntityRepository;
 import com.tunisair.entities.UserEntity;
+import com.tunisair.message.MessageResponse;
 import com.tunisair.service.AppConstants;
 import com.tunisair.service.FileStorageService;
 import com.tunisair.service.UserEntityService;
@@ -127,6 +129,13 @@ public class UserController {
 		
 	}
 	
-	
+	@PutMapping(value = "/updateDetailsU/{value}/{id}/{attribute}")
+	public ResponseEntity<MessageResponse> updateUserDetail(@PathVariable(value = "value") String value,@PathVariable(value = "id") String id,@PathVariable(value = "attribute") String attribute){
+		
+		Us.ChangeDetailUser(value, id, attribute);
+		return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse("Details user modifié"));
+	}
 	
 }
+	
+
