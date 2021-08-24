@@ -1,5 +1,6 @@
 package com.tunisair.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -23,6 +24,13 @@ public interface Formation_DetailsRepository extends JpaRepository<Formation_Det
 	@Modifying(clearAutomatically = true)
 	@Query(value = "DELETE FROM formation_details WHERE idp=?1 and idf=?2 ", nativeQuery = true)
 	public void DesInscriptionFormation(String idP,long idf);
+	@Transactional
+	@Modifying(clearAutomatically = true)
+	@Query(value = "UPDATE formation_details SET date_passage=?1 WHERE idp=?2 and idf=?3", nativeQuery = true)
+	public void updateDateExamen(Date Date_passage ,String idP,long idf);
+	
+	
+
 	
 	
 	

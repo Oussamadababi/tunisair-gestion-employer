@@ -60,4 +60,15 @@ public class UserEntityService {
 		 UER.UpdateDetailUser(value, Idu, attribute);
 		
 	}
+	
+	public List<UserEntity> FindUserByRole() {
+		List<UserEntity> ListePerso=new ArrayList();
+		List<String> ListeIdparPerso = UER.ListeDesIdPerso(UER.GetRoleIdByName("chef equipe"));
+		for (String ListeP : ListeIdparPerso) {
+			ListePerso.add(UER.getOne(ListeP));
+
+		}
+        return ListePerso;
+	
+}
 }

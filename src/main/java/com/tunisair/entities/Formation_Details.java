@@ -2,6 +2,7 @@ package com.tunisair.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Formation_Details implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long Id;
 	
-	private Date Date_passage;
+	private LocalDateTime  Date_passage;
 	private String Etat;
 
 	// Relation avec entité formation et personnel (Porteuse de données)
@@ -40,14 +41,15 @@ public class Formation_Details implements Serializable {
 		Id = id;
 	}
 
-	public Date getDate_passage() {
+	
+
+	public LocalDateTime getDate_passage() {
 		return Date_passage;
 	}
 
-	public void setDate_passage(Date date_passage) {
+	public void setDate_passage(LocalDateTime date_passage) {
 		Date_passage = date_passage;
 	}
-
 
 	public UserEntity getPersonnel() {
 		return personnel;
@@ -74,8 +76,10 @@ public class Formation_Details implements Serializable {
 	}
 
 	
-	public Formation_Details(long id, Date date_passage, String etat,
-			UserEntity personnel, Formation formation) {
+
+
+	public Formation_Details(long id, LocalDateTime date_passage, String etat, UserEntity personnel,
+			Formation formation) {
 		super();
 		Id = id;
 		Date_passage = date_passage;

@@ -1,7 +1,9 @@
 package com.tunisair.controller;
 
+import java.sql.Date;
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,5 +100,20 @@ public class FormationController {
 		public List <UserEntity> usernonaffecterformation(@PathVariable(name="idf") long idf){	
 			return  Fs.ListePersonnelNonAffecter(idf);
 			}
-
+		@PutMapping(value="/updateDate/{Date}/{idp}/{idf}")
+		public void updateDateExamen(@PathVariable(name="Date") Date datee,
+				@PathVariable(name="idp") String idp,@PathVariable(name="idf") long idf){
+			
+			Fs.updateDateExamen(datee, idp, idf);
+		}
+		@GetMapping(value="/EnvoyerMail")
+		public void envoyerMail () throws MessagingException{
+			
+			try {
+				Fs.envoyerMailPersonnelDateExamen();
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 }

@@ -37,7 +37,7 @@ import com.tunisair.service.UserEntityService;
 
 @CrossOrigin(origins = "http://localhost:4201")
 @RestController
-@RequestMapping("/User")
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired 
@@ -58,9 +58,9 @@ public class UserController {
 		}
 	
 	/*Liste des  personnels*/
-	@GetMapping(value="/findallPerso")
+	@GetMapping(value="/findallchefequipe")
 	public List <UserEntity> findallPerso(){	
-		return  Us.findallPerso();
+		return  Us.FindUserByRole();
 		}
 	
 	/*Liste des  Role*/
@@ -92,7 +92,7 @@ public class UserController {
 			int num=fileDownloadUri.indexOf("/downloadFile");
 			String partie1 =fileDownloadUri.substring(0,num);
 			String partie2 =fileDownloadUri.substring(num,fileDownloadUri.length());
-			String Complete = partie1+"/User/"+partie2;
+			String Complete = partie1+"/user/"+partie2;
 			UER.UpdateProfilPic(Complete, id);
 			
 		}
