@@ -76,9 +76,9 @@ public class UserEntity {
 	}
 
 	// Relation
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personnel")
 	@JsonIgnore
-	private Set<Qualification> Qualifications;
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personnel")
+	private List<Qualification_details> Qualification_details;
 
 	// Relation
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "personnel")

@@ -1,13 +1,13 @@
 package com.tunisair.entities;
 
-import java.sql.Date;
 
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,20 +19,27 @@ public class Qualification {
 	private String Secteur;
 	private String Libelle_secteur;
 	private String Qualification_type;
-	private Date Date_debut;
-	private Date Date_fin;
 
 	// Relation entre la certification et technicien
-	@ManyToOne(cascade = CascadeType.ALL)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "qualification")
 	@JsonIgnore
-	UserEntity personnel;
+	private List<Qualification_details> Qualification_details;
+	@JsonIgnore
 
 	// getters and setters
 
+	
+
+	public List<Qualification_details> getQualification_details() {
+		return Qualification_details;
+	}
+
+	public void setQualification_details(List<Qualification_details> qualification_details) {
+		Qualification_details = qualification_details;
+	}
 	public long getId() {
 		return Id;
 	}
-
 	public void setId(long id) {
 		Id = id;
 	}
@@ -61,47 +68,20 @@ public class Qualification {
 		Qualification_type = qualification_type;
 	}
 
-	public Date getDate_debut() {
-		return Date_debut;
-	}
-
-	public void setDate_debut(Date date_debut) {
-		Date_debut = date_debut;
-	}
-
-	public Date getDate_fin() {
-		return Date_fin;
-	}
-
-	public void setDate_fin(Date date_fin) {
-		Date_fin = date_fin;
-	}
-
+	
+	// Constructeurs
 	
 
-	public UserEntity getPersonnel() {
-		return personnel;
+	public Qualification() {
+		super();
 	}
 
-	public void setPersonnel(UserEntity personnel) {
-		this.personnel = personnel;
-	}
-
-	// Constructeurs
-	public Qualification(long id, String secteur, String libelle_secteur, String qualification_type, Date date_debut,
-			Date date_fin, UserEntity personnel) {
+	public Qualification(long id, String secteur, String libelle_secteur, String qualification_type) {
 		super();
 		Id = id;
 		Secteur = secteur;
 		Libelle_secteur = libelle_secteur;
 		Qualification_type = qualification_type;
-		Date_debut = date_debut;
-		Date_fin = date_fin;
-		this.personnel = personnel;
-	}
-
-	public Qualification() {
-		super();
 	}
 
 }

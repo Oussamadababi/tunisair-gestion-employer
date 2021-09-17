@@ -14,5 +14,6 @@
 		<class>com.tunisair.entities.UserRoleMapping</class>
 		<class>com.tunisair.entities.UserRoleMappingPK</class>
 		<class>com.tunisair.entities.KeycloakRole</class>
+		<class>com.tunisair.entities.Qualification_details</class>
 	</persistence-unit>
 </persistence>

@@ -190,6 +190,22 @@ public class Formation {
 		Date_fin = date_fin;
 		Formations_Details = formations_Details;
 	}
+
+	public Formation(long id, String organisme, String nom_Formation, String libelle, String code, Integer duree,
+			Integer cout, Integer delais, boolean aeronotique, boolean formation_repetitive, boolean diplome) {
+		super();
+		Id = id;
+		Organisme = organisme;
+		Nom_Formation = nom_Formation;
+		Libelle = libelle;
+		Code = code;
+		Duree = duree;
+		Cout = cout;
+		Delais = delais;
+		Aeronotique = aeronotique;
+		Formation_repetitive = formation_repetitive;
+		Diplome = diplome;
+	}
 	
 	
 

@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tunisair.entities.Formation;
 import com.tunisair.entities.Qualification;
+import com.tunisair.entities.Qualification_details;
+import com.tunisair.entities.UserEntity;
 import com.tunisair.service.QualificationService;
+import com.tunisair.service.UserEntityService;
 
 @CrossOrigin(origins = "http://localhost:4201")
 @RestController
@@ -26,6 +28,9 @@ public class QualificationController {
 
 	@Autowired 
 	QualificationService Qs;
+	@Autowired 
+	UserEntityService UES;
+	
 	
 	// Ajout Qualification
    @PostMapping("/ajout")
@@ -44,8 +49,6 @@ public class QualificationController {
 	@PutMapping(value="/update/{id}")
 	public void update(@PathVariable(name="id") Long id,@RequestBody Qualification p){
 		Qualification pers=Qs.findOne(id);
-		pers.setDate_debut(p.getDate_debut());
-		pers.setDate_fin(p.getDate_fin());
 		pers.setLibelle_secteur(p.getLibelle_secteur());
 		pers.setQualification_type(p.getQualification_type());
 		pers.setSecteur(p.getSecteur());
@@ -58,4 +61,29 @@ public class QualificationController {
 	public void delete(@PathVariable(name="id") Long id){
 		Qs.delete(id);
 	}
+	@GetMapping(value="/findmyqualif/{id}")
+	public List <Qualification_details> findmyqualif(@PathVariable(name="id") String id){	
+		return  Qs.findQualifByIdUser(id);
+		}
+	
+	@GetMapping(value="/findalluserbyqualif/{idq}")
+	public List <UserEntity> findalluserbyqualif(@PathVariable(name="idq") long id){	
+		return  Qs.ListePersoParIdQualif(id);
+		}
+	
+	@GetMapping(value="/findallusernotqualified/{idq}")
+	public List <UserEntity> findalluserbynotqualif(@PathVariable(name="idq") long id){	
+		  
+		List<UserEntity> allusers=UES.findall();
+		List<UserEntity> useraffecter=Qs.ListePersoParIdQualif(id);
+		 allusers.removeAll(useraffecter);
+		 return allusers;
+		}
+	 @PostMapping("/ajoutdetail/{idp}/{idq}")
+		public Qualification_details createQD(@PathVariable(name="idp") String idp,@PathVariable(name="idq") long idq,@Valid @RequestBody Qualification_details Q )
+		{ 
+		
+			return Qs.saveQD(idp,idq,Q);
+		}
+	
 }

@@ -13,12 +13,12 @@ import com.tunisair.entities.EquipePersonnel;
 
 @Repository
 public interface EquipePersonnelRepository  extends JpaRepository<EquipePersonnel, Long>{
-	@Query(value = "SELECT equipe_personnel.id,first_name,last_name,equipe_personnel.id_equipe FROM user_entity INNER JOIN equipe_personnel ON user_entity.id = equipe_personnel.id_personnel where id_equipe=?1", nativeQuery = true)
-	public  List<Object> ListeMembreByIdGroupe(Long IdEquipe);
+	@Query(value = "SELECT * FROM equipe_personnel where id_equipe=?1", nativeQuery = true)
+	public  List<EquipePersonnel> ListeMembreByIdGroupe(long IdEquipe);
 	@Transactional
 	@Modifying(clearAutomatically = true)
-	@Query(value = "DELETE FROM equipe_personnel WHERE id_personnel=?1", nativeQuery = true)
-	public  void deleteMemberofEquipe(String IdP);
+	@Query(value = "DELETE FROM equipe_personnel WHERE id_equipe=?1 and id_personnel=?2", nativeQuery = true)
+	public  void deleteMemberofEquipe(long idequipe,String IdP);
 	
 	//
 	

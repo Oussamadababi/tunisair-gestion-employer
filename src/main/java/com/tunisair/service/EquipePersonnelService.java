@@ -1,5 +1,6 @@
 package com.tunisair.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -69,12 +70,30 @@ public class  EquipePersonnelService {
 		return  EquipePersonnelRepo.getOne(id_F);
 	}
 	/* Chercher Les membres d'equipe by idEquipe */
-	public List< Object> FindMembers(Long IdEquipe) {
-		List< Object> a =  EquipePersonnelRepo.ListeMembreByIdGroupe(IdEquipe);
-		return a;
+	public List< UserEntity> FindMembers(long IdEquipe) {
+		List< EquipePersonnel> ListeDetails =  EquipePersonnelRepo.ListeMembreByIdGroupe(IdEquipe);
+		List <UserEntity> ListeUserEquipe = new ArrayList();
+		for ( EquipePersonnel  EquipePersonnels : ListeDetails) {
+			ListeUserEquipe.add(EquipePersonnels.getPersonnel());
+
+		}
+		return ListeUserEquipe;
 	}
-	public void DeleteMemberByIDP(String id) {
-		EquipePersonnelRepo.deleteMemberofEquipe(id);
+	public void DeleteMemberByIDP(long ide,String id) {
+		EquipePersonnelRepo.deleteMemberofEquipe(ide,id);
+	}
+	
+	public List< UserEntity> FindMembersavailable() {
+		List< EquipePersonnel> ListeDetails =  EquipePersonnelRepo.findAll();
+		List <UserEntity> ListeUserEquipe = new ArrayList();
+		for ( EquipePersonnel  EquipePersonnels : ListeDetails) {
+			ListeUserEquipe.add(EquipePersonnels.getPersonnel());
+
+		}
+		List <UserEntity> ListeUserEquipeAvailable = new ArrayList();
+		ListeUserEquipeAvailable=UER.findAll();
+		ListeUserEquipeAvailable.removeAll(ListeUserEquipe);
+		return ListeUserEquipeAvailable;
 	}
 
 }

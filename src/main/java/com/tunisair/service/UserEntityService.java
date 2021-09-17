@@ -71,4 +71,11 @@ public class UserEntityService {
         return ListePerso;
 	
 }
+	public boolean VerificationExistanceUser(String marticule){
+		 if(UER.GetUserbyUsername(marticule).getUsername().length()!=0){
+			 return true;
+		 }
+		return false;
+		
+	}
 }

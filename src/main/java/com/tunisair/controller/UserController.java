@@ -136,6 +136,11 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).body(new MessageResponse("Details user modifié"));
 	}
 	
+	@GetMapping(value = "/verifAdduser/{matricule}")
+	public boolean verificationUserByusername(@PathVariable(value = "matricule") String matricule){
+		 return	Us.VerificationExistanceUser(matricule);
+			
+		}
 }
 	
 

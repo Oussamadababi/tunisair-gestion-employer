@@ -2,10 +2,7 @@ package com.tunisair.controller;
 
 import java.sql.Date;
 import java.util.List;
-
-import javax.mail.MessagingException;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,7 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.mailjet.client.errors.MailjetException;
 import com.tunisair.entities.Formation;
 import com.tunisair.entities.Formation_Details;
 import com.tunisair.entities.UserEntity;
@@ -106,12 +103,41 @@ public class FormationController {
 			
 			Fs.updateDateExamen(datee, idp, idf);
 		}
-		@GetMapping(value="/EnvoyerMail")
-		public void envoyerMail () throws MessagingException{
+		@GetMapping(value="/envoyerMailExamen")
+		public void envoyerMailExamen () {
 			
 			try {
 				Fs.envoyerMailPersonnelDateExamen();
-			} catch (MessagingException e) {
+			
+				// TODO Auto-generated catch block
+				
+			} catch (MailjetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		@GetMapping(value="/envoyerMaildatedebutf")
+		public void envoyerMaildebutFormation () {
+			
+			try {
+				Fs.envoyerMailPersonnelDateDebut();
+			
+				// TODO Auto-generated catch block
+				
+			} catch (MailjetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		@GetMapping(value="/envoyerMaildatefintf")
+		public void envoyerMailFinFormtion () {
+			
+			try {
+				Fs.envoyerMailPersonnelDateFin();
+			
+				// TODO Auto-generated catch block
+				
+			} catch (MailjetException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

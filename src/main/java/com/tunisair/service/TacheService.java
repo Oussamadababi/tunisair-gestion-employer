@@ -1,11 +1,13 @@
 package com.tunisair.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import com.tunisair.dao.TacheRepository;
 import com.tunisair.entities.Equipe;
 import com.tunisair.entities.Tache;
@@ -77,5 +79,11 @@ public class TacheService {
 		 Tache T=TacheRepo.getOne(idT);
 		 T.setStatus(true);
 	}
+	public Tache update2(Tache F) {
+		return TacheRepo.save(F);
+
+	}
+	
+	
 
 }
