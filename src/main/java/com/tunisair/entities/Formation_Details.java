@@ -88,6 +88,14 @@ public class Formation_Details implements Serializable {
 		this.formation = formation;
 	}
 
+	public Formation_Details(LocalDateTime date_passage, String etat, UserEntity personnel, Formation formation) {
+		super();
+		Date_passage = date_passage;
+		Etat = etat;
+		this.personnel = personnel;
+		this.formation = formation;
+	}
+
 	public Formation_Details() {
 		super();
 	}

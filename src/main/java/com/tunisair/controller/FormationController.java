@@ -2,7 +2,9 @@ package com.tunisair.controller;
 
 import java.sql.Date;
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,12 +16,14 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.mailjet.client.errors.MailjetException;
 import com.tunisair.entities.Formation;
 import com.tunisair.entities.Formation_Details;
 import com.tunisair.entities.UserEntity;
 import com.tunisair.message.MessageResponse;
 import com.tunisair.service.FormationService;
+import com.tunisair.service.MailService;
 
 
 
@@ -30,6 +34,8 @@ public class FormationController {
 	
 	@Autowired 
 	FormationService Fs;
+	@Autowired 
+	MailService Ms;
 	
 	// Ajout formation
    @PostMapping("/ajout")
@@ -107,7 +113,7 @@ public class FormationController {
 		public void envoyerMailExamen () {
 			
 			try {
-				Fs.envoyerMailPersonnelDateExamen();
+				Ms.envoyerMailPersonnelDateExamen();
 			
 				// TODO Auto-generated catch block
 				
@@ -120,7 +126,7 @@ public class FormationController {
 		public void envoyerMaildebutFormation () {
 			
 			try {
-				Fs.envoyerMailPersonnelDateDebut();
+				Ms.envoyerMailPersonnelDateDebut();
 			
 				// TODO Auto-generated catch block
 				
@@ -133,7 +139,7 @@ public class FormationController {
 		public void envoyerMailFinFormtion () {
 			
 			try {
-				Fs.envoyerMailPersonnelDateFin();
+				Ms.envoyerMailPersonnelDateFin();
 			
 				// TODO Auto-generated catch block
 				

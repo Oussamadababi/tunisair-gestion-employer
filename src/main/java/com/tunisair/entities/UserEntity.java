@@ -290,4 +290,24 @@ public class UserEntity {
 		return "UserEntity [firstName=" + firstName + ", lastName=" + lastName + ", username=" + username + "]";
 	}
 
+	public UserEntity(String id, Long createdTimestamp, String email, String emailConstraint, Boolean emailVerified,
+			Boolean enabled, String federationLink, String firstName, String lastName, Integer notBefore,
+			String realmId, String serviceAccountClientLink, String username) {
+		super();
+		this.id = id;
+		this.createdTimestamp = createdTimestamp;
+		this.email = email;
+		this.emailConstraint = emailConstraint;
+		this.emailVerified = emailVerified;
+		this.enabled = enabled;
+		this.federationLink = federationLink;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.notBefore = notBefore;
+		this.realmId = realmId;
+		this.serviceAccountClientLink = serviceAccountClientLink;
+		this.username = username;
+	}
+	
+
 }

@@ -78,6 +78,25 @@ public class Equipe {
 				+ EquipePersonnel + ", Taches=" + Taches + "]";
 	}
 
+	public Equipe(long id, String nom) {
+		super();
+		Id = id;
+		Nom = nom;
+	}
+
+	public Equipe(long id, String nom, UserEntity chef_equipe) {
+		super();
+		Id = id;
+		Nom = nom;
+		Chef_equipe = chef_equipe;
+	}
+
+	public Equipe(String nom, UserEntity chef_equipe) {
+		super();
+		Nom = nom;
+		Chef_equipe = chef_equipe;
+	}
+
 	
 
 }

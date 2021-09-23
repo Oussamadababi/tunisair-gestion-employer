@@ -73,6 +73,14 @@ public class Qualification_details implements Serializable {
 		public Qualification_details() {
 			super();
 		}
+		public Qualification_details(Date date_reussite, Date date_fin, UserEntity personnel,
+				Qualification qualification) {
+			super();
+			this.date_reussite = date_reussite;
+			this.date_fin = date_fin;
+			this.personnel = personnel;
+			this.qualification = qualification;
+		}
 
 		
 }

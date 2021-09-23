@@ -28,16 +28,7 @@ public class UserEntityService {
         return a;
 	}
 
-	/* voir tous les personnel */
-	public List<UserEntity> findallPerso() {
-		List<UserEntity> ListePerso=new ArrayList();
-		List<String> ListeIdparPerso = UER.ListeDesIdPerso(UER.GetRoleIdByName("personnel"));
-		for (String ListeP : ListeIdparPerso) {
-			ListePerso.add(UER.getOne(ListeP));
 
-		}
-        return ListePerso;
-	}
 	/* voir tous les Role */
 	public List<String> findRole() {
 		   return UER.ListeDesNouveauxRoles();

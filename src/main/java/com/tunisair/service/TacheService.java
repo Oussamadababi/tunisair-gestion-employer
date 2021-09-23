@@ -49,11 +49,7 @@ public class TacheService {
 		TacheRepo.deleteById(id);
 	}
 
-	/* Update d'une Tache */
-	public Tache updateTache(Tache F) {
-		return TacheRepo.save(F);
-
-	}
+	
 
 	/* Chercher une Tache */
 	public Tache findOne(long id_F) {

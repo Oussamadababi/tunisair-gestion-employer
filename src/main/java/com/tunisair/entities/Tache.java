@@ -89,6 +89,17 @@ public class Tache {
 		this.status = status;
 		Equipe = equipe;
 	}
+
+	public Tache(String nom, String description, Date date_debut, boolean status, com.tunisair.entities.Equipe equipe) {
+		super();
+		Nom = nom;
+		Description = description;
+		Date_debut = date_debut;
+		this.status = status;
+		Equipe = equipe;
+	}
+
+	
 	
 	
 }
